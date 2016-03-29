@@ -13,4 +13,11 @@ describe("Airport", function() {
     });
   });
 
+  describe("Plane takes off", function(){
+    it ("is removed from planes array", function(){
+      airport.takeoff(plane)
+      expect(airport.planes).not.toContain('plane')
+    });
+  });
+
 });
