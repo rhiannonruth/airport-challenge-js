@@ -9,9 +9,15 @@ Airport.prototype.planes = function(){
 }
 
 Airport.prototype.land = function(plane){
+  if(this._weather.isStormy()) {
+    throw new Error("Stormy, cannot land!");
+  }
   this._hangar.push(plane)
 }
 
 Airport.prototype.takeoff = function(plane){
+  if(this._weather.isStormy()) {
+    throw new Error("Stormy, cannot take off!");
+  }
   this._hangar.splice(plane)
 }
