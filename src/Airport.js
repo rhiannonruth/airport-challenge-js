@@ -25,7 +25,3 @@ Airport.prototype.takeoff = function(plane){
   }
   this._hangar.splice(plane)
 }
-//
-// Aiport.prototype._isFull = function(){
-//   this._hanger.length === this._CAPACITY
-// }
