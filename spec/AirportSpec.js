@@ -1,13 +1,15 @@
 describe("Airport", function() {
 
   var airport = new Airport();
-  // plane = jasmine.createSpyObj('plane',[<method>])
-  var plane
+  // plane = jasmine.createSpyObj('plane', 'takeoff')
+  var plane = 'plane'
+  // var plane2 - value is undefined
 
   describe("Plane lands", function(){
     it ("is added to planes array", function(){
       airport.land(plane)
-      expect(airport.planes.length).toEqual(1)
+      // airport.land(plane2)
+      expect(airport.planes).toContain('plane')
     });
   });
 
