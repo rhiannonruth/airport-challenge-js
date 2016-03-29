@@ -1,23 +1,24 @@
-describe("Airport", function() {
+'use strict';
+describe("Airport", function(){
+  var airport;
+  var plane;
 
-  var airport = new Airport();
-  // plane = jasmine.createSpyObj('plane', 'takeoff')
-  var plane = 'plane'
-  // var plane2 - value is undefined
-
-  describe("Plane lands", function(){
-    it ("is added to planes array", function(){
-      airport.land(plane)
-      // airport.land(plane2)
-      expect(airport.planes).toContain('plane')
-    });
+  beforeEach(function(){
+  airport = new Airport();
+  plane   = jasmine.createSpy('plane');
+  });
+  it ('has empty hangar by default', function(){
+    expect(airport.planes()).toEqual([]);
   });
 
-  describe("Plane takes off", function(){
-    it ("is removed from planes array", function(){
-      airport.takeoff(plane)
-      expect(airport.planes).not.toContain('plane')
-    });
+  it ("is added to planes array", function(){
+    airport.land(plane)
+    expect(airport.planes()).toContain(plane)
+  });
+
+  it ("is removed from planes array", function(){
+    airport.takeoff(plane)
+    expect(airport.planes()).not.toContain(plane)
   });
 
 });
