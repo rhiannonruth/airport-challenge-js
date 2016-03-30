@@ -2,10 +2,12 @@
 describe("Airport", function(){
   var airport;
   var plane;
+  var plane2;
 
   beforeEach(function(){
     airport = new Airport();
     plane   = jasmine.createSpy('plane');
+    plane2 = jasmine.createSpy('plane2');
   });
 
   it('has empty hangar by default', function(){
@@ -36,8 +38,10 @@ describe("Airport", function(){
   it("takeoff removed plane from planes hangar", function(){
     spyOn(Math, 'random').and.returnValue(0);
     airport.land(plane)
+    airport.land(plane2)
     airport.takeoff(plane)
     expect(airport.planes()).not.toContain(plane)
+    expect(airport.planes()).toContain(plane2)
   });
 
   describe ("when stormy", function(){
