@@ -11,7 +11,9 @@ describe("Airport", function(){
   it('has empty hangar by default', function(){
     expect(airport.planes()).toEqual([]);
   });
+
   describe('landing', function(){
+
     beforeEach(function(){
       spyOn(Math, 'random').and.returnValue(0);
     });
@@ -25,7 +27,8 @@ describe("Airport", function(){
       for(var i = 1; i <= 10; i++){
            airport.land(plane);
       }
-      expect(airport.planes.length).toEqual(10);
+      expect(airport.planes().length).toEqual(10);
+      expect( function(){ airport.land(plane); } ).toThrow(new Error("Hanger full!"));
     });
   });
 
